@@ -1,37 +1,76 @@
-# Lab 1
-Switches, Lights, and Multiplexers
+![FPGA](https://img.shields.io/badge/FPGA-DE10--Lite-blue)
+![Language](https://img.shields.io/badge/Language-Verilog-green)
+![Simulator](https://img.shields.io/badge/Tool-Logisim-orange)
+# Lab 1 — Switches, Lights, and Multiplexers (FPGA DE10-Lite)
 
-The purpose of this exercise is to learn how to connect simple input and output devices to an FPGA chip and
-implement a circuit that uses these devices. I will use the switches SW9-0 on the DE10 Lite board, with a MAX 10 (10M50DAF484C7G) chip, as inputs to the
-circuit. I will use light emitting diodes (LEDs) and 7-segment displays as output devices.
+This repository documents my first FPGA lab using the DE10-Lite (MAX 10 10M50DAF484C7G).  
+The goal is to learn how to connect simple input/output devices and implement multiplexers, decoders, and sequential logic. I will use the switches SW9-0 as inputs to the circuit, light emitting diodes (LEDs) and 7-segment displays as output devices.
+
+## Table of Contents
+- [Part I — Switches to LEDs](## PART I)
+- [Part II — 2-to-1 4-bit MUX](## PART I)
+- [Part III — 4-to-1 2-bit MUX](#part-iii)
+- [Part IV — 7-segment decoder (H, E, L, O)](#part-iv)
+- [Part V — Static HELLO on 5 displays](#part-v)
+- [Part VI — HELLO with blank space](#part-vi)
+- [Part VII (Extra) — Automatic scrolling HELLO](#part-vii-extra)
+
+  
+## PART I -- Switches to LEDs
+
+### Objective
+Implement and test a simple assignament of the switches to the LEDs.
 
 
-## PART I
-### Module that connects the SW switches to the LEDR   lights
+### Logic / Design
+A main block contains the expression to assign the nine switches to the corresponding LEDs.
 
-The inputs and outputs are defined as the switches and LEDs and I assigned directly.
+*Figure 1.1 — Switches to LEDs assignament logic*
+
 <img src="IMG/Part_I.png" width="300">
 
-Bellow can be seen a demonstration:
+
+### Implementation
+
+*Figure 1.2 — Switches to LEDs Implementation*
 
 <img src="IMG/Part_I_Demonstration.gif" width="500">
 
 
-## PART II
-### Module with the funcitonality of a 2-to-1 4 bit multiplexer
+## PART II -- 2-to-1 4-bit Multiplexer
 
-Using Logisim Evolution we can simulated the functionality of both a 2-to-1 1bit and 2-to-1 8bit multimplexer to understant how it works.
+### Objective
+Implement and test a 2-to-1 multiplexer that handles 4-bit inputs using Verilog on the DE10-Lite FPGA.
+
+
+### Logic / Design
+A 4-bit multiplexer can be built by combining four instances of a 2-to-1 1-bit multiplexer.
+
+*Figure 2.1 — 1-bit 2-to-1 multiplexer logic*
+
 <img src="IMG/Part_II_1bitMUX_Demonstration.gif" width="300">
-<img src="IMG/Part_II_4bitMUX_Demonstration.gif" width="300">
 
-As we only have ten selectors in our FPGA, we will implement a 2-to-1 4bit multimplexer. In it will be four 2-to-1 1bit multimplexers with the following logic:
+*Figure 2.2 — 4-bit 2-to-1 multiplexer block diagram*
+
+<img src="IMG/Part_II_8bitMUX_Demonstration.gif" width="300">
+
+
+### Implementation
+
+*Figure 2.3 — 1-bit 2-to-1 multiplexer Implementation*
+
 <img src="IMG/Part_II_mux_2_1_1_bit.png" width="300">
+
+*Figure 2.4 — 4-bit 2-to-1 multiplexer Implementation*
+
 <img src="IMG/Part_II_mux_2_1_4_bit.png" width="300">
 
-And in our main file we will need to call the 2-to-1 4bit using the selector switches and the LEDs.
+*Figure 2.5 — Main block Implementation*
+
 <img src="IMG/Part_II_main.png" width="300">
 
-Bellow can be seen a demonstration:
+
+### Demonstration
 
 <img src="IMG/Part_II_Demonstration.gif" width="500">
 
@@ -61,7 +100,13 @@ Using Logisim Evolution we can simulated the functionality of a 7 segment decode
 <img src="IMG/Part_IV_7seg_Demonstration.gif" width="300">
 
 To define the logic, we would use the following Look Up Table (LUT). As our 7 segment displays are NOT active in high, whenever we want them to be off, we will set them as 1. After doing the Kmaps, we can implement the logic.
-<img src="IMG/Part_IV_mux_7_seg_LUT.png" width="300">
+| Input (c2 c1 c0) | Output (HEX segments) | Letter |
+|------------------|------------------------|--------|
+| 000              | 0111111                | H      |
+| 001              | 1001111                | E      |
+| 010              | 1110110                | L      |
+| 011              | 1111110                | O      |
+
 <img src="IMG/Part_IV_mux_7_seg.png" width="300">
 
 And in our main file we will need to call 7 segment decoder using the selector switches and the LEDs.
