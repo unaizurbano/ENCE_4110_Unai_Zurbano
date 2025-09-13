@@ -149,18 +149,18 @@ To define the logic, a Look Up Table (LUT) is needed. The 7 segment displays are
 ### Implementation
 After doing the Kmaps, the logic can be implemented.
 
-*Figure 4.2 — 7-segment decoder Implementation*
+*Figure 4.3 — 7-segment decoder Implementation*
 
 <img src="IMG/Part_IV_mux_7_seg.png" width="300">
 
-*Figure 4.3 — Main block Implementation*
+*Figure 4.4 — Main block Implementation*
 
 <img src="IMG/Part_IV_main.png" width="300">
 
 
 ### Demonstration
 
-*Figure 4.4 — 7-segment decoder Demonstration*
+*Figure 4.5 — 7-segment decoder Demonstration*
 
 <img src="IMG/Part_IV_Demonstration.gif" width="500">
 
