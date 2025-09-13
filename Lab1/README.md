@@ -4,7 +4,7 @@
 # Lab 1 — Switches, Lights, and Multiplexers (FPGA DE10-Lite)
 
 This repository documents my first FPGA lab using the DE10-Lite (MAX 10 10M50DAF484C7G).  
-The goal is to learn how to connect simple input/output devices and implement multiplexers, decoders, and sequential logic. I will use the switches SW9-0 as inputs to the circuit, light emitting diodes (LEDs) and 7-segment displays as output devices.
+The goal is to learn how to connect simple input/output devices and implement multiplexers, decoders, and sequential logic. I will use the switches SW[9-0] as inputs to the circuit, light emitting diodes (LEDs) and 7-segment displays as output devices.
 
 ## Table of Contents
 - [Part I — Switches to LEDs](## PART I)
@@ -44,7 +44,7 @@ Implement and test a 2-to-1 multiplexer that handles 4-bit inputs using Verilog 
 
 
 ### Logic / Design
-A 4-bit multiplexer can be built by combining four instances of a 2-to-1 1-bit multiplexer.
+A 2-to-1 4-bit multiplexer can be built by combining four instances of a 2-to-1 1-bit multiplexer.
 
 *Figure 2.1 — 1-bit 2-to-1 multiplexer logic*
 
@@ -72,34 +72,66 @@ A 4-bit multiplexer can be built by combining four instances of a 2-to-1 1-bit m
 
 ### Demonstration
 
+*Figure 2.6 — 2-to-1 4-bit Multiplexer Demonstration*
+
 <img src="IMG/Part_II_Demonstration.gif" width="500">
 
 
-## PART III
-### Module with the funcitonality of a 4-to-1 2 bit multiplexer
 
-Using Logisim Evolution we can simulated the functionality of both a 2-to-1 1bit and 2-to-1 8bit multimplexer to understant how it works.
+## PART III -- 4-to-1 2-bit Multiplexer
+
+### Objective
+Implement and test a 4-to-1 multiplexer that handles 2-bit inputs using Verilog on the DE10-Lite FPGA.
+
+
+### Logic / Design
+A 4-to-1 2-bit multiplexer can be built by combining two instances of a 4-to-1 1-bit multiplexer.
+
+*Figure 3.1 — 2-bit 4-to-1 multiplexer logic*
+
 <img src="IMG/Part_III_2bitMUX_Demonstration.gif" width="300">
 
-As we only have ten selectors in our FPGA, we will implement a 4-to-1 2bit multimplexer. In it will be two 4-to-1 1bit multimplexers with the following logic:
+
+### Implementation
+
+*Figure 3.2 — 1-bit 4-to-1 multiplexer Implementation*
+
 <img src="IMG/Part_III_mux_4_1_1_bit.png" width="300">
+
+*Figure 3.3 — 2-bit 4-to-1 multiplexer Implementation*
+
 <img src="IMG/Part_III_mux_4_1_2_bit.png" width="300">
 
-And in our main file we will need to call the 4-to-1 2bit using the selector switches and the LEDs.
+*Figure 3.4 — Main block Implementation*
+
 <img src="IMG/Part_III_main.png" width="300">
 
-Bellow can be seen a demonstration:
+
+### Demonstration
+
+*Figure 3.5 — 4-to-1 2-bit Multiplexer Demonstration*
 
 <img src="IMG/Part_III_Demonstration.gif" width="500">
 
 
-## PART IV
-### Module of a 7 segments decoder to print the letters "H", "E", "L" and "O"
 
-Using Logisim Evolution we can simulated the functionality of a 7 segment decoder to understant how it works. In our case we will only use 7 bits, the "dot" (8th bit is not needed)
+## PART IV -- 7-segments display decoder to dsiplay letters [H, E, L, O]
+
+### Objective
+Implement and test a module of a 7 segments decoder to display the letters "H", "E", "L" and "O".
+
+
+### Logic / Design
+A 7-segment decoder is used to display the characters or numbers desiared with a 3-bit input. In this implementation, are only needed 7 bits, the "dot" (8th bit is not needed). And to make the design simple, only four charactersare included in the table plus the 'Blank' character.
+
+*Figure 4.1 — 7-segment decoder logic*
+
 <img src="IMG/Part_IV_7seg_Demonstration.gif" width="300">
 
-To define the logic, we would use the following Look Up Table (LUT). As our 7 segment displays are NOT active in high, whenever we want them to be off, we will set them as 1. After doing the Kmaps, we can implement the logic.
+To define the logic, a Look Up Table (LUT) is needed. The 7 segment displays are NOT active in high, whenever are required to be off, will be set to 1.
+
+*Figure 4.2 — 7-segment LUT*
+
 | Input (c2 c1 c0) | Output (HEX segments) | Letter |
 |------------------|------------------------|--------|
 | 000              | 0111111                | H      |
@@ -107,51 +139,116 @@ To define the logic, we would use the following Look Up Table (LUT). As our 7 se
 | 010              | 1110110                | L      |
 | 011              | 1111110                | O      |
 
+
+### Implementation
+After doing the Kmaps, the logic can be implemented.
+
+*Figure 4.2 — 7-segment decoder Implementation*
+
 <img src="IMG/Part_IV_mux_7_seg.png" width="300">
 
-And in our main file we will need to call 7 segment decoder using the selector switches and the LEDs.
+*Figure 4.3 — Main block Implementation*
+
 <img src="IMG/Part_IV_main.png" width="300">
 
-Bellow can be seen a demonstration:
+
+### Demonstration
+
+*Figure 4.4 — 7-segment decoder Demonstration*
 
 <img src="IMG/Part_IV_Demonstration.gif" width="500">
 
 
-## PART V
-### Multiplexer 3-to-1 3 bits to print an static "HELLO" in five 7-segments
 
-After implementing the decoder in our previous part, we can use five of the 7-segments display to print the word "HELLO". And using the three selectors will switch the letters and create a cascade moviment.
-<img src="IMG/Part_V_mux_7_seg_LUT.png" width="300">
+## PART V -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in 5 displays
 
-At first I used the same procidure as our previous part, following the LUT and doing the kmaps but I straggled and decided to continue with a conditional prespective. In the following picture can be seen part of the logic I wrote commented.
+### Objective
+Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using five displays.
+
+
+### Logic / Design
+A 3-to-1 3-bits multiplexer module handles a 7-segment decoder to display the word in five of the 7-segment displays. The 3-bit selector will switch the letters and create a cascade moviment.
+To define the logic, a Look Up Table (LUT) is needed.
+
+*Figure 5.1 — 3-to-1 3-bits multiplexer to 7-segment decoder LUT*
+
+| Input (c2 c1 c0) | Character pattern [H4--H0] |
+|------------------|----------------------------|
+| 000              | H  E  L  L  O              |  
+| 001              | E  L  L  O  H              |  
+| 010              | L  L  O  H  E              |  
+| 011              | L  O  H  E  L              |
+| 100              | O  H  E  L  L              |
+
+
+### Implementation
+The implementation strated using the same logic as previous parts, but it was simpler using the conditional perspective.
+
+*Figure 5.2 — 3-to-1 3-bits multiplexer Implementation*
+
 <img src="IMG/Part_V_mux_5_1_3bit.png" width="300">
 
-And in our main file we will need to call five of our 7 segments decoder and the 5-to-1 3bit multimplexer using the selector switches and the LEDs.
-<img src="IMG/Part_IV_main.png" width="300">
+*Figure 5.3 — Main block Implementation*
 
-Bellow can be seen a demonstration:
+<img src="IMG/Part_V_main.png" width="300">
+
+
+### Demonstration
+
+*Figure 5.4 — 3-to-1 3-bits multiplexer to 7-segment decoder Demonstration*
 
 <img src="IMG/Part_V_Demonstration.gif" width="500">
 
 
-## PART VI
-### Multiplexer 3-to-1 3 bits to print an static "HELLO" in six 7-segments
 
-After implementing the decoder in our previous part, we can use the extra 7-segments display too to print the word "HELLO" and a space, creating a space at the end/begining to create the ilusion of moving with the three selectors.
-<img src="IMG/Part_VI_mux_7_seg_LUT.png" width="300">
+## PART VI -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays
 
-We only need to insert the extra 7-segment display and modify the logic to implement the void before/after the word "HELLO".
+### Objective
+Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays.
+
+
+### Logic / Design
+A 3-to-1 3-bits multiplexer module handles a 7-segment decoder to display the word in six of the 7-segment displays. The 3-bit selector will switch the letters and create the ilusion of moviment.
+To define the logic, a Look Up Table (LUT) is needed.
+
+*Figure 6.1 — 3-to-1 3-bits multiplexer to 7-segment decoder LUT*
+
+| Input (c2 c1 c0) | Character pattern [H5--H0] |
+|------------------|----------------------------|
+| 000              | /  H  E  L  L  O           |  
+| 001              | E  L  L  O  H  /           |  
+| 010              | L  L  O  H  /  E           |  
+| 011              | L  O  H  /  E  L           |
+| 100              | O  H  /  E  L  L           |
+| 101              | O  /  H  E  L  L           |
+
+
+### Implementation
+Using the implementation of previous parts, the sixth display is included in the logic as the 'Blank' space.
+
+*Figure 6.2 — 3-to-1 3-bits multiplexer Implementation*
+
 <img src="IMG/Part_VI_mux_5_1_3bit.png" width="300">
 
-And in our main file we will need to also include the extra 7 segments decoder and the 5-to-1 3bit multimplexer modified, using the selector switches and the LEDs.
-<img src="IMG/Part_VI_main.png" width="300">
+*Figure 6.3 — Main block Implementation*
 
-Bellow can be seen a demonstration:
+<img src="IMG/Part_V_main.png" width="300">
+
+
+### Demonstration
+
+*Figure 6.4 — 3-to-1 3-bits multiplexer to 7-segment decoder Demonstration*
 
 <img src="IMG/Part_VI_Demonstration.gif" width="500">
 
 
-## (extra) PART VII 
-### Implement a counter to trigger de segments without using the selector and make de word "HELLO" move by itself. Can be adjusted in time to go faster and slower.
 
+## (extra) PART VII -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays with moviment
+
+### Objective
+Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays and moving the letters without selectors.
+
+
+### Logic / Design
+A 3-to-1 3-bits multiplexer module handles a 7-segment decoder to display the word in six of the 7-segment displays. The 3-bit selector is subtituded with an automated module with a 0 to 6 counter.
 
