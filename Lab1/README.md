@@ -6,17 +6,23 @@
 This repository documents my first FPGA lab using the DE10-Lite (MAX 10 10M50DAF484C7G).  
 The goal is to learn how to connect simple input/output devices and implement multiplexers, decoders, and sequential logic. I will use the switches SW[9-0] as inputs to the circuit, light emitting diodes (LEDs) and 7-segment displays as output devices.
 
-## Table of Contents
-- [Part I — Switches to LEDs](## PART I)
-- [Part II — 2-to-1 4-bit MUX](## PART I)
-- [Part III — 4-to-1 2-bit MUX](#part-iii)
-- [Part IV — 7-segment decoder (H, E, L, O)](#part-iv)
-- [Part V — Static HELLO on 5 displays](#part-v)
-- [Part VI — HELLO with blank space](#part-vi)
-- [Part VII (Extra) — Automatic scrolling HELLO](#part-vii-extra)
+<!-- Table of content -->
+<nav>
+  <h1>Table of Contents</h2>
+  <ul>
+    <li><a href="#Part I">Part I</a></li>
+    <li><a href="#Part II">Part II</a></li>
+    <li><a href="#Part III">Part III</a></li>
+    <li><a href="#Part IV">Part IV</a></li>
+    <li><a href="#Part V">Part V</a></li>
+    <li><a href="#Part VI">Part VI</a></li>
+    <li><a href="#Part VII">(extra) Part VII</a></li>
+  </ul>
+</nav>
 
-  
-## PART I — Switches to LEDs
+
+<!-- Sections -->
+<h2 id="Part I">Part I — Switches to LEDs</h2>  
 
 ### Objective
 Implement and test a simple assignament of the switches to the LEDs.
@@ -37,7 +43,7 @@ A main block contains the expression to assign the nine switches to the correspo
 <img src="IMG/Part_I_Demonstration.gif" width="500">
 
 
-## PART II — 2-to-1 4-bit Multiplexer
+<h2 id="Part II">Part II — 2-to-1 4-bit Multiplexer</h2>  
 
 ### Objective
 Implement and test a 2-to-1 multiplexer that handles 4-bit inputs using Verilog on the DE10-Lite FPGA.
@@ -78,7 +84,7 @@ A 2-to-1 4-bit multiplexer can be built by combining four instances of a 2-to-1 
 
 
 
-## PART III — 4-to-1 2-bit Multiplexer
+<h2 id="Part III">Part III — 4-to-1 2-bit Multiplexer</h2> 
 
 ### Objective
 Implement and test a 4-to-1 multiplexer that handles 2-bit inputs using Verilog on the DE10-Lite FPGA.
@@ -115,7 +121,7 @@ A 4-to-1 2-bit multiplexer can be built by combining two instances of a 4-to-1 1
 
 
 
-## PART IV — 7-segments display decoder to dsiplay letters [H, E, L, O]
+<h2 id="Part IV">Part IV — 7-segments display decoder to dsiplay letters [H, E, L, O]</h2> 
 
 ### Objective
 Implement and test a module of a 7 segments decoder to display the letters "H", "E", "L" and "O".
@@ -160,7 +166,7 @@ After doing the Kmaps, the logic can be implemented.
 
 
 
-## PART V — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in 5 displays
+<h2 id="Part V">Part V — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in five displays</h2> 
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using five displays.
@@ -201,7 +207,7 @@ The implementation strated using the same logic as previous parts, but it was si
 
 
 
-## PART VI — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays
+<h2 id="Part VI">Part VI — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays</h2> 
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays.
@@ -243,7 +249,7 @@ Using the implementation of previous parts, the sixth display is included in the
 
 
 
-## (extra) PART VII — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays with moviment
+<h2 id="Part VII">(extra) Part VII — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays with moviment</h2> 
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays and moving the letters without selectors.
