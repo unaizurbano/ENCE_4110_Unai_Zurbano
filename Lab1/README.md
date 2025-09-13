@@ -16,7 +16,7 @@ The goal is to learn how to connect simple input/output devices and implement mu
 - [Part VII (Extra) — Automatic scrolling HELLO](#part-vii-extra)
 
   
-## PART I -- Switches to LEDs
+## PART I — Switches to LEDs
 
 ### Objective
 Implement and test a simple assignament of the switches to the LEDs.
@@ -37,7 +37,7 @@ A main block contains the expression to assign the nine switches to the correspo
 <img src="IMG/Part_I_Demonstration.gif" width="500">
 
 
-## PART II -- 2-to-1 4-bit Multiplexer
+## PART II — 2-to-1 4-bit Multiplexer
 
 ### Objective
 Implement and test a 2-to-1 multiplexer that handles 4-bit inputs using Verilog on the DE10-Lite FPGA.
@@ -78,7 +78,7 @@ A 2-to-1 4-bit multiplexer can be built by combining four instances of a 2-to-1 
 
 
 
-## PART III -- 4-to-1 2-bit Multiplexer
+## PART III — 4-to-1 2-bit Multiplexer
 
 ### Objective
 Implement and test a 4-to-1 multiplexer that handles 2-bit inputs using Verilog on the DE10-Lite FPGA.
@@ -115,7 +115,7 @@ A 4-to-1 2-bit multiplexer can be built by combining two instances of a 4-to-1 1
 
 
 
-## PART IV -- 7-segments display decoder to dsiplay letters [H, E, L, O]
+## PART IV — 7-segments display decoder to dsiplay letters [H, E, L, O]
 
 ### Objective
 Implement and test a module of a 7 segments decoder to display the letters "H", "E", "L" and "O".
@@ -160,7 +160,7 @@ After doing the Kmaps, the logic can be implemented.
 
 
 
-## PART V -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in 5 displays
+## PART V — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in 5 displays
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using five displays.
@@ -201,7 +201,7 @@ The implementation strated using the same logic as previous parts, but it was si
 
 
 
-## PART VI -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays
+## PART VI — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays.
@@ -243,7 +243,7 @@ Using the implementation of previous parts, the sixth display is included in the
 
 
 
-## (extra) PART VII -- 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays with moviment
+## (extra) PART VII — 3-to-1 3-bits Multiplexer and 7-segment decoder to display word [HELLO] in six displays with moviment
 
 ### Objective
 Implement and test a 3-to-1 3-bits multiplexer module with a 7 segments decoder to display the word "HELLO" using six displays and moving the letters without selectors.
